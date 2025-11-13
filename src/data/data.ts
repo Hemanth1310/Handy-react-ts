@@ -55,7 +55,14 @@ export const data = {
       "variants": [
         {
           "sku": "HB1-STD",
-          "name": "Standard",
+          "name": "White",
+          "color": "White",
+          "price": 99.99,
+          "inStock": true
+        },
+        {
+          "sku": "HB1-STD",
+          "name": "Black",
           "color": "Black",
           "price": 99.99,
           "inStock": true
@@ -71,8 +78,15 @@ export const data = {
       "variants": [
         {
           "sku": "HB1P-STD",
-          "name": "Pro",
+          "name": "White",
           "color": "White",
+          "price": 149.99,
+          "inStock": true
+        },
+        {
+          "sku": "HB1P-STD",
+          "name": "Black",
+          "color": "Black",
           "price": 149.99,
           "inStock": true
         }
@@ -94,7 +108,7 @@ export const data = {
       "id": "acc-case",
       "name": "Clear Protective Case",
       "category": "phone-case",
-      "description": "Durable, clear case that fits all Handy phones.",
+      "description": "Durable, Vibrant, clear case that fits all Handy phones.",
       "price": 19.99,
       "compatibility": ["mobile-h1", "mobile-h1pro", "all-mobiles"],
       "image_url": "/images/phonecase.jpg",
