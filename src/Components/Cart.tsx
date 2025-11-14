@@ -27,7 +27,7 @@ const Cart = (props: Props) => {
                 </div>)}
                 
             </div>
-            <Link to='/checkout'>Checkout</Link>
+            <Link to='/checkout' >Proceed to Checkout</Link>
         </div>
     </div>
   )
