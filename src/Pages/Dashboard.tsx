@@ -3,20 +3,15 @@ import {data} from '../data/data'
 import type { Accessories, CartItem, Product,ProductVariants } from '../Types'
 import { cartHandler } from '../Context/Context'
 
-const Dashboard = () => {
+type Props = {
+    handleCart:()=>void
+}
+
+const Dashboard = (props:Props) => {
     console.log(data)
     const Products  = data.products as Product[]
     const Accessories = data.accessories as Accessories[]
-    const [initBuy,setInitBuy] = useState<boolean>(false)
     const {updateCart} = cartHandler();
-
-    const handleBuyProduct=()=>{
-        if(!initBuy){
-            setInitBuy(true)
-        }else{
-            setInitBuy(false)
-        }
-    }
 
     const buyProduct=(product:Product,variant:ProductVariants)=>{
         const basicCartItem :CartItem = {
@@ -34,7 +29,7 @@ const Dashboard = () => {
         }
 
         updateCart(newCartItem)
-         setInitBuy(false)
+        props.handleCart()
     }
 
   return (
@@ -48,7 +43,12 @@ const Dashboard = () => {
                     <div className='text-gray-400'>{product.description}</div>
                     <div className='flex gap-4 items-center'>
                         Variants: {product.variants.map(variant=>
-                    <button onClick={()=>buyProduct(product,variant)} className='border-2 box-border rounded-2xl px-3 py-1 mt-3 hover:text-white hover:bg-gray-900'>{variant.name}</button>)}
+                        <div className=''>
+                            <button onClick={()=>buyProduct(product,variant)} disabled={!variant.inStock} className={`border-2 box-border rounded-2xl px-3 py-1 mt-3 ${!variant.inStock ? 'border-gray-400 text-gray-400 cursor-not-allowed':'hover:text-white hover:bg-gray-900'}`}>{variant.name}</button>
+                            {!variant.inStock && <p className='absolute font-light text-xs text-gray-500'>Variant not in Stock</p>}
+                        </div>
+                        )}
+
                     </div>
                     
                     

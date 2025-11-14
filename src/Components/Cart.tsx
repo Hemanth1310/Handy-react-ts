@@ -1,12 +1,15 @@
 import React from 'react'
 import { cartHandler } from '../Context/Context'
+import { Link, useNavigate } from 'react-router'
 
-type Props = {}
+type Props = {
+    handleCart:()=>void
+}
 
 const Cart = (props: Props) => {
    const {cartitems}= cartHandler()
   return (
-    <div className='fixed bg-black/50 overflow-y-auto h-full w-full z-50 mt-[60px] transition-all duration-300 ease-in-out'>
+    <div onClick={props.handleCart} className='fixed bg-black/50 overflow-y-auto h-full w-full z-50 mt-[60px] transition-all duration-300 ease-in-out'>
         <div className='relative top-0 right-0 h-full w-full md:w-[500px] bg-white shadow-xl ml-auto flex flex-col items-center py-10 px-0 gap-5'>
             <h1 className='text-2xl'>HandyStore</h1>
             <div className='flex flex-col w-full p-5'>
@@ -24,6 +27,7 @@ const Cart = (props: Props) => {
                 </div>)}
                 
             </div>
+            <Link to='/checkout'>Checkout</Link>
         </div>
     </div>
   )
